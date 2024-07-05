@@ -75,6 +75,8 @@ class DoublyLinkedList:
             if(currentPosition==position):
                 previousNode.next=currentNode.next
                 nextNode.previous=currentNode.previous
+                currentNode.next=None
+                currentNode.previous=None
                 break
             previousNode=currentNode
             currentNode=currentNode.next
