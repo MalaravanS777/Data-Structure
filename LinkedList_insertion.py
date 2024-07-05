@@ -14,7 +14,8 @@ class LinkedList:
     def insertHead(self,newNode):
         tempNode=self.head
         self.head=newNode
-        newNode.next=tempNode
+        self.head.next=tempNode
+        del tempNode
     def insertEnd(self,newNode):
         if self.head is None:
             self.head=newNode
