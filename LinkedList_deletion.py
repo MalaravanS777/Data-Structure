@@ -32,7 +32,7 @@ class LinkedList:
         if position==-1:
             self.insertEnd(newNode)
             return
-        if position<0 and position>_self.listLength():
+        if position<0 and position>=self.listLength():
             print("Invalid Position")
         currentPosition=0
         currentNode=self.head
@@ -70,6 +70,27 @@ class LinkedList:
             previousNode=currentNode
             currentPosition+=1
             currentNode=currentNode.next
+    def deleteValue(self,val):
+      if(self.head is None):
+        print("List is Empty")
+        return
+      if(self.head.next==None):
+        if(self.head.data==val):
+          self.head=None
+          return
+      currentPosition=0
+      currentNode=self.head
+      previousNode=currentNode
+      while currentNode.data is not val:
+        if(currentPosition>=0 and currentPosition<self.listLength()):
+          previousNode=currentNode
+          currentNode=currentNode.next
+          currentPosition+=1
+        else:
+          print("Value not Present")
+      if(currentPosition<self.listLength()):
+        previousNode.next=currentNode.next
+        currentNode.next=None
     def printList(self):
         currentNode=self.head
         while currentNode is not None:
@@ -80,13 +101,46 @@ class LinkedList:
 linkedList=LinkedList()
 firstNode=Node("John")
 linkedList.insertEnd(firstNode)
+linkedList.printList()
 secondNode=Node("Jack")
 linkedList.insertHead(secondNode)
+linkedList.printList()
 thirdNode=Node("Jacob")
 linkedList.insertAt(thirdNode,0)
+linkedList.printList()
 fourthNode=Node("James")
 linkedList.insertAt(fourthNode,2)
+linkedList.printList()
 linkedList.deleteAt(2)
+linkedList.printList()
 linkedList.deleteHead()
+linkedList.printList()
 linkedList.deleteEnd()
 linkedList.printList()
+linkedList.                      deleteValue("James")
+linkedList.printList()
+linkedList.deleteValue("Jack")
+print("End\n")
+linkedList1=LinkedList()
+firstNode=Node("Kenma")
+linkedList1.insertEnd(firstNode)
+linkedList1.printList()
+secondNode=Node("Karthi")
+linkedList1.insertHead(secondNode)
+linkedList1.printList()
+thirdNode=Node("Kiran")
+linkedList1.insertAt(thirdNode,0)
+linkedList1.printList()
+fourthNode=Node("Kathir")
+linkedList1.insertAt(fourthNode,2)
+linkedList1.printList()
+linkedList1.deleteAt(2)
+linkedList1.printList()
+linkedList1.deleteHead()
+linkedList1.printList()
+linkedList1.deleteEnd()
+linkedList1.printList()
+linkedList1.deleteValue("Kathir")
+linkedList1.printList()
+linkedList1.deleteValue("Karthi")
+print("End\n")
